@@ -1,8 +1,21 @@
 import React, { useCallback } from 'react';
 import styles from './ConfigForm.module.scss';
 
+const supportedAlgorithms = [
+  'SHA1',
+  'SHA224',
+  'SHA256',
+  'SHA384',
+  'SHA512',
+  'SHA3-224',
+  'SHA3-256',
+  'SHA3-384',
+  'SHA3-512',
+];
+
 export interface IRawConfig {
   secret: string;
+  algorithm: string;
   period: number;
   digits: number;
 }
@@ -23,6 +36,21 @@ export function ConfigForm({ config, onChange }: IConfigFormProps) {
       onChange({
         ...config,
         secret: e.target.value,
+      });
+    },
+    [config, onChange]
+  );
+  const handleAlgorithmChange = useCallback<
+    React.ChangeEventHandler<HTMLSelectElement>
+  >(
+    (e) => {
+      const url = new URL(window.location.href);
+      const newValue = e.target.value;
+      url.searchParams.set('algorithm', newValue);
+      window.history.replaceState(null, '', url.toString());
+      onChange({
+        ...config,
+        algorithm: newValue,
       });
     },
     [config, onChange]
@@ -67,6 +95,18 @@ export function ConfigForm({ config, onChange }: IConfigFormProps) {
           value={config.secret}
           onChange={handleSecretChange}
         />
+      </label>
+      <br />
+      <label>
+        Algorithm
+        <br />
+        <select value={config.algorithm} onChange={handleAlgorithmChange}>
+          {supportedAlgorithms.map((algo) => (
+            <option key={algo} value={algo}>
+              {algo}
+            </option>
+          ))}
+        </select>
       </label>
       <br />
       <label>

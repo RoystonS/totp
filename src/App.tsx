@@ -6,26 +6,37 @@ import { ConfigForm, IRawConfig } from './ConfigForm';
 import { RenderCode } from './RenderCode';
 
 function App() {
+  const [error, setError] = useState('');
   const [secret, setSecret] = useState(getSecretFromUrl);
+  const [algorithm, setAlgorithm] = useState(getAlgorithmFromUrl);
   const [period, setPeriod] = useState(getPeriodFromUrl);
   const [digits, setDigits] = useState(getDigitsFromUrl);
 
   function handleChange(config: IRawConfig) {
     setSecret(config.secret);
+    setAlgorithm(config.algorithm);
     setPeriod(config.period);
     setDigits(config.digits);
   }
 
   const otp = useMemo(() => {
-    return new TOTP({
-      secret,
-      digits,
-      period,
-    });
-  }, [secret, period, digits]);
+    try {
+      const totp = new TOTP({
+        secret,
+        digits,
+        period,
+        algorithm,
+      });
+      setError('');
+      return totp;
+    } catch (err) {
+      setError((err as any).toString());
+      return undefined;
+    }
+  }, [secret, algorithm, period, digits]);
 
   const otpUrl = useMemo(() => {
-    return otp.toString();
+    return otp?.toString();
   }, [otp]);
 
   // TODO: use reducer or store whole config
@@ -33,6 +44,7 @@ function App() {
     digits,
     period,
     secret,
+    algorithm,
   };
 
   return (
@@ -44,6 +56,7 @@ function App() {
       </p>
       <ConfigForm config={config} onChange={handleChange} />
       <br />
+      {error ? <div className={styles.error}>{error}</div> : null}
       {otp ? <RenderCode otp={otp} /> : null}
       <br />
       <div className={styles.otpurl}>{otpUrl}</div>
@@ -57,6 +70,12 @@ function getSecretFromUrl(): string {
   const url = new URL(window.location.href);
   const secret = url.hash.substring(1) || 'SECRET';
   return secret;
+}
+
+function getAlgorithmFromUrl(): string {
+  const url = new URL(window.location.href);
+  const value = url.searchParams.get('algorithm') || 'SHA1';
+  return value;
 }
 
 function getPeriodFromUrl(): number {
