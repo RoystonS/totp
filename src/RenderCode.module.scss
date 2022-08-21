@@ -1,0 +1,71 @@
+.codesContainer {
+  position: relative;
+}
+
+$text-size: 3rem;
+$translate-amount: 2rem;
+
+%_code {
+  font-size: $text-size;
+  position: absolute;
+  top: 0;
+}
+.thisCode {
+  @extend %_code;
+}
+.nextCode {
+  @extend %_code;
+  opacity: 0;
+}
+.slideOut {
+  animation: slideOutKF 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+.slideIn {
+  animation: slideInKF 2s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slideOutKF {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-$translate-amount);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInKF {
+  from {
+    opacity: 0;
+    transform: translateY($translate-amount);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+$lozenge-radius: 1rem;
+
+%_timerLozenge {
+  border-radius: $lozenge-radius;
+}
+.timerOuterLozenge {
+  @extend %_timerLozenge;
+  border: 2px solid black;
+}
+
+.timerInnerLozenge {
+  @extend %_timerLozenge;
+
+  height: 1rem;
+  background-color: lightsteelblue;
+  transition-property: width;
+  transition-duration: 1000ms;
+  transition-timing-function: linear;
+}
