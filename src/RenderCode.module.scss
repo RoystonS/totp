@@ -1,11 +1,15 @@
-.codesContainer {
-  position: relative;
-}
+@import './vars.scss';
 
 $text-size: 3rem;
 $translate-amount: 2rem;
 
+.codesContainer {
+  position: relative;
+  height: $text-size;
+}
+
 %_code {
+  font-family: $mono-font;
   font-size: $text-size;
   position: absolute;
   top: 0;

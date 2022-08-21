@@ -1,7 +1,6 @@
-import clsx from 'clsx';
 import type { TOTP } from 'otpauth';
 
-import classes from './RenderCode.module.scss';
+import styles from './RenderCode.module.scss';
 import { useGenerateCode, useTOTPPeriodInfo } from './useTOTPPeriodInfo';
 
 export interface IRenderCodeProps {
@@ -23,17 +22,17 @@ export function RenderCode(props: IRenderCodeProps) {
   const switchingOver = remainingTime < switchOver;
 
   return (
-    <div className={switchingOver ? classes.switchingOver : ''}>
+    <div className={switchingOver ? styles.switchingOver : ''}>
       Remaining time: {remainingTime}
-      <div className={classes.timerOuterLozenge}>
+      <div className={styles.timerOuterLozenge}>
         <div
-          className={classes.timerInnerLozenge}
+          className={styles.timerInnerLozenge}
           style={{ width: width }}
         ></div>
-        <div className={classes.codesContainer}>
-          <div className={classes.thisCode}>{thisCode}</div>
-          <div className={classes.nextCode}>{nextCode}</div>
-        </div>
+      </div>
+      <div className={styles.codesContainer}>
+        <div className={styles.thisCode}>{thisCode}</div>
+        <div className={styles.nextCode}>{nextCode}</div>
       </div>
     </div>
   );

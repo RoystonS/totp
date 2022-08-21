@@ -1,0 +1,12 @@
+@import './vars.scss';
+
+.main {
+  font-family: $body-font;
+
+  margin: auto;
+  max-width: 600px;
+}
+
+.otpurl {
+  font-family: $mono-font;
+}
