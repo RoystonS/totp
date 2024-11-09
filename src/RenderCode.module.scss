@@ -71,17 +71,17 @@ $lozenge-radius: 1rem;
 
 .timerOuterLozenge {
   @extend %_timerLozenge;
-  border: 3px solid black;
+  border: 2px solid vars.$color-accent;
 }
 
 .timerInnerLozenge {
   @extend %_timerLozenge;
 
   height: 1rem;
-  background-color: lightsteelblue;
+  background-color: vars.$color-lozenge-normal;
 
   .switchingOver & {
-    background-color: lightcoral;
+    background-color: vars.$color-lozenge-warn;
   }
 
   .speedyLozengeAnimation & {

@@ -52,8 +52,38 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
+
+  --color-bg: #ffffff;
+  --color-fg: #111111;
+  --color-accent: #444444;
+  --color-lozenge-normal: lightsteelblue;
+  --color-lozenge-warn: lightcoral;
+
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+input,
+button,
+textarea,
+select {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  border-style: none;
+  border-bottom-style: inset;
+  border-bottom-width: 1px;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --color-bg: #111111;
+    --color-fg: #ffffff;
+    --color-accent: #5c5c5c;
+    --color-lozenge-normal: #60A0FF;
+    --color-lozenge-warn: rgb(177, 24, 24);
+  }
 }
