@@ -29,18 +29,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-      - name: Use Node.js 16.x
-        uses: actions/setup-node@v3
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 16.x
-          cache: "npm"
-      - run: npm ci
-      - run: npm run build
+          version: 9
+      - name: Configure NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: package.json
+          cache: "pnpm"
+      - run: pnpm install
+      - run: pnpm run build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
-          path: "build"
+          path: "dist"
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
