@@ -27,6 +27,8 @@ function App() {
         period,
         algorithm,
       });
+      // Can we generate at all?
+      totp.generate();
       setError('');
       return totp;
     } catch (err) {
