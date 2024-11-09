@@ -9,6 +9,13 @@ const config = defineConfig({
     host: true,
   },
 
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+      },
+    },
+  },
   plugins: [pluginReact()],
 });
 export default config;
