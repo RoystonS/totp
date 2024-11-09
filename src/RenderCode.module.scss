@@ -84,7 +84,12 @@ $lozenge-radius: 1rem;
     background-color: lightcoral;
   }
 
+  .speedyLozengeAnimation & {
+    transition-duration: 250ms;
+    transition-timing-function: ease-out;
+  }
+
   transition-property: width;
-  transition-duration: 1000ms;
+  transition-duration: 500ms;
   transition-timing-function: linear;
 }

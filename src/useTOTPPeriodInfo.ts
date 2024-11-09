@@ -1,5 +1,5 @@
 import type { TOTP } from 'otpauth';
-import { useState, useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export function useTOTPPeriodInfo(period: number) {
   const [remainingTime, setRemainingTime] = useState(0);
@@ -10,12 +10,11 @@ export function useTOTPPeriodInfo(period: number) {
   useEffect(() => {
     const handle = setInterval(() => {
       const newPeriodNumber = getPeriodNumber(period);
-      const remainingTime = Math.round(
-        ((newPeriodNumber + 1) * period * 1000 - Date.now()) / 1000,
-      );
+      const remainingTime =
+        ((newPeriodNumber + 1) * period * 1000 - Date.now()) / 1000;
       setPeriodNumber(newPeriodNumber);
       setRemainingTime(remainingTime);
-    }, 1000);
+    }, 500);
 
     return () => {
       clearInterval(handle);
