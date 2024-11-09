@@ -5,6 +5,10 @@ const config = defineConfig({
   // Prevent absolute '/'-leading paths
   base: "",
 
+  server: {
+    host: true,
+  },
+
   plugins: [pluginReact()],
 });
 export default config;

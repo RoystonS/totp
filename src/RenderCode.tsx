@@ -23,17 +23,19 @@ export function RenderCode(props: IRenderCodeProps) {
 
   const switchOver = 5;
 
-  const width = `${(100 * lozengeTime) / otp.period}%`;
+  const widthPercentage = (100 * lozengeTime) / otp.period;
+
+  const width = `${widthPercentage.toString()}%`;
 
   const switchingOver = remainingTime < switchOver;
 
-  const largeChange = roundedRemainingTime == otp.period;
+  const speedyLozengeAnimation = roundedRemainingTime == otp.period;
 
   return (
     <div
       className={clsx({
         [styles.switchingOver]: switchingOver,
-        [styles.largeChange]: largeChange,
+        [styles.speedyLozengeAnimation]: speedyLozengeAnimation,
       })}
     >
       Remaining time: {roundedRemainingTime}

@@ -22,7 +22,7 @@ export interface IRawConfig {
 }
 export interface IConfigFormProps {
   config: IRawConfig;
-  onChange(config: IRawConfig): void;
+  onChange: (config: IRawConfig) => void;
 }
 
 export function ConfigForm({ config, onChange }: IConfigFormProps) {

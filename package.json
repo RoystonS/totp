@@ -13,7 +13,9 @@
   },
   "scripts": {
     "dev": "vite serve",
-    "build": "vite build"
+    "lint": "eslint",
+    "compile": "vite build",
+    "build": "run-s lint compile"
   },
   "volta": {
     "node": "22.11.0",
@@ -28,6 +30,7 @@
     "cross-env": "^7.0.3",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react-hooks": "^5.0.0",
+    "npm-run-all2": "^7.0.1",
     "prettier": "^3.3.3",
     "sass-embedded": "^1.80.6",
     "typescript-eslint": "^8.13.0",

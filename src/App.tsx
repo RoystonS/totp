@@ -30,7 +30,8 @@ function App() {
       setError('');
       return totp;
     } catch (err) {
-      setError((err as any).toString());
+      const error = err as Error;
+      setError(error.toString());
       return undefined;
     }
   }, [secret, algorithm, period, digits]);
