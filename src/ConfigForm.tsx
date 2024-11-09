@@ -38,7 +38,7 @@ export function ConfigForm({ config, onChange }: IConfigFormProps) {
         secret: e.target.value,
       });
     },
-    [config, onChange]
+    [config, onChange],
   );
   const handleAlgorithmChange = useCallback<
     React.ChangeEventHandler<HTMLSelectElement>
@@ -53,7 +53,7 @@ export function ConfigForm({ config, onChange }: IConfigFormProps) {
         algorithm: newValue,
       });
     },
-    [config, onChange]
+    [config, onChange],
   );
   const handlePeriodChange = useCallback<
     React.ChangeEventHandler<HTMLInputElement>
@@ -67,7 +67,7 @@ export function ConfigForm({ config, onChange }: IConfigFormProps) {
         period: parseInt(e.target.value, 10),
       });
     },
-    [config, onChange]
+    [config, onChange],
   );
   const handleDigitsChange = useCallback<
     React.ChangeEventHandler<HTMLInputElement>
@@ -81,7 +81,7 @@ export function ConfigForm({ config, onChange }: IConfigFormProps) {
         digits: parseInt(e.target.value, 10),
       });
     },
-    [config, onChange]
+    [config, onChange],
   );
 
   return (

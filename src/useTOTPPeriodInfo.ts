@@ -4,14 +4,14 @@ import { useState, useEffect, useMemo } from 'react';
 export function useTOTPPeriodInfo(period: number) {
   const [remainingTime, setRemainingTime] = useState(0);
   const [periodNumber, setPeriodNumber] = useState(() =>
-    getPeriodNumber(period)
+    getPeriodNumber(period),
   );
 
   useEffect(() => {
     const handle = setInterval(() => {
       const newPeriodNumber = getPeriodNumber(period);
       const remainingTime = Math.round(
-        ((newPeriodNumber + 1) * period * 1000 - Date.now()) / 1000
+        ((newPeriodNumber + 1) * period * 1000 - Date.now()) / 1000,
       );
       setPeriodNumber(newPeriodNumber);
       setRemainingTime(remainingTime);

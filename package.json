@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "prettier": "^3.3.3",
     "typescript-plugin-css-modules": "^3.4.0"
   }
 }
