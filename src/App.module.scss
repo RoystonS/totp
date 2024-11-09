@@ -1,14 +1,14 @@
-@import './vars.scss';
+@use 'vars.scss';
 
 .main {
-  font-family: $body-font;
+  font-family: vars.$body-font;
 
   margin: auto;
   max-width: 600px;
 }
 
 .otpurl {
-  font-family: $mono-font;
+  font-family: vars.$mono-font;
 }
 
 .error {

@@ -1,6 +1,6 @@
-@import './vars.scss';
+@use 'vars.scss';
 
 .inputSecret {
-  font-family: $mono-font;
+  font-family: vars.$mono-font;
   width: 30em;
 }
