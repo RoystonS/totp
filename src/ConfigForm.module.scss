@@ -3,4 +3,11 @@
 .inputSecret {
   font-family: vars.$mono-font;
   width: 30em;
+  max-width: 80%;
+}
+
+.inputAlgorithm,
+.inputPeriod,
+.inputDigits {
+  width: 8em;
 }

@@ -1,4 +1,5 @@
 import React, { useCallback } from 'react';
+
 import styles from './ConfigForm.module.scss';
 
 const supportedAlgorithms = [
@@ -100,7 +101,11 @@ export function ConfigForm({ config, onChange }: IConfigFormProps) {
       <label>
         Algorithm
         <br />
-        <select value={config.algorithm} onChange={handleAlgorithmChange}>
+        <select
+          className={styles.inputAlgorithm}
+          value={config.algorithm}
+          onChange={handleAlgorithmChange}
+        >
           {supportedAlgorithms.map((algo) => (
             <option key={algo} value={algo}>
               {algo}
@@ -113,6 +118,7 @@ export function ConfigForm({ config, onChange }: IConfigFormProps) {
         Period
         <br />
         <input
+          className={styles.inputPeriod}
           type="number"
           value={config.period}
           onChange={handlePeriodChange}
@@ -125,6 +131,7 @@ export function ConfigForm({ config, onChange }: IConfigFormProps) {
         Digits
         <br />
         <input
+          className={styles.inputDigits}
           type="number"
           value={config.digits}
           onChange={handleDigitsChange}

@@ -4,11 +4,13 @@
   font-family: vars.$body-font;
 
   margin: auto;
-  max-width: 600px;
+  padding: 0.5em;
+  max-width: min(80vw, 600px);
 }
 
 .otpurl {
   font-family: vars.$mono-font;
+  overflow-wrap: anywhere;
 }
 
 .error {
